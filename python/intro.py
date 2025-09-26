@@ -9,8 +9,8 @@ elif n % 3 == 1:
 else:
     print("n = 3k + 2")
 
-# ----- loops -----
 
+# ----- loops -----
 # --- while ---
 i = 0
 while i < 10:
@@ -23,3 +23,11 @@ print()                    # prelazak u novi red
 for i in range(10):         # ponasa se kao for each u drugim jezicima
     print(i, end=" ")
 
+print()                    # prelazak u novi red
+
+# ----- functions -----
+def kvadrati_brojeva(a, b):
+    for i in range(a, b+1):
+        print(i**2, end=" ")
+
+print()                    # prelazak u novi red
