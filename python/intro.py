@@ -36,7 +36,8 @@ print()                             # prelazak u novi red
 
 # ----- data structures -----
 # --- list ---
-# - ponasa se kao dinamicki niz, jer nije bas kao ulancana lista
+# - ponasa se kao dinamicki niz, ne funkcionise kao ulancana lista
+# - mutable (promjenjiva)
 
 list = [5, 8, 10, 13, 24, 30, 48]   # deklaracija liste, ne moraju svi podaci da budu istog tipa
 
@@ -75,15 +76,28 @@ else:
 
 print(list.count(13))               # broj pojavljivanja elementa u listi
 
-def comparator(x):                 # custom comparator funkcija za opadajuci poredak
+def comparator(x):                  # custom comparator funkcija za opadajuci poredak
     return -x
-print(sorted(list, key=comparator))  # sortiranje liste bez promjene originalne liste (key moze biti i lambda funkcija)
-print(sorted(list, key=lambda x: -x)) # lambda funkcije su jednolinijske jednkratne funckije za proste operacije
+print(sorted(list, key=comparator))     # sortiranje liste bez promjene originalne liste (key moze biti i lambda funkcija)
+print(sorted(list, key=lambda x: -x))   # lambda funkcije su jednolinijske jednkratne funckije za proste operacije
 
 # --- tuple ---
+# - nepromjenjiva verzija liste
+# - immutable (nepromjenjiva)
 
+tuple = (1, 2, 3)                   # deklaracije torke, ne moraju svi podaci da budu istog tipa
+print(tuple)                        # ispis torke, koriste se drugacije zagrade () u odnosu na listu []
+print(tuple[1])
+# tuple[1] = 5                      # baca TypeError jer je tuple nepromjenjiv
+print(tuple[1:])                    # slicing radi kao i kod liste
 
-# --- dictionary ---            # ekivalenta hash mapama u drugim jezicima
+empty = ()
+print(empty, type(empty))           # prazan tuple
+single = (1,)                       # tuple sa jednim elementom mora imati zarez
+# single = (1)                      # inace se tretira kao int
+print(single, type(single))                      
+
+# --- dictionary ---                # ekivalenta hash mapama u drugim jezicima
 
 
 # --- set ---
