@@ -30,4 +30,5 @@ def kvadrati_brojeva(a, b):
     for i in range(a, b+1):
         print(i**2, end=" ")
 
+kvadrati_brojeva(2, 8)
 print()                    # prelazak u novi red
