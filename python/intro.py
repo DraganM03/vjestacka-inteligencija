@@ -75,9 +75,9 @@ else:
 
 print(list.count(13))               # broj pojavljivanja elementa u listi
 
-def cmomparator(x):                 # custom comparator funkcija za opadajuci poredak
+def comparator(x):                 # custom comparator funkcija za opadajuci poredak
     return -x
-print(sorted(list, key=cmomparator))  # sortiranje liste bez promjene originalne liste (key moze biti i lambda funkcija)
+print(sorted(list, key=comparator))  # sortiranje liste bez promjene originalne liste (key moze biti i lambda funkcija)
 print(sorted(list, key=lambda x: -x)) # lambda funkcije su jednolinijske jednkratne funckije za proste operacije
 
 # --- tuple ---
