@@ -1,6 +1,7 @@
 # Intro to Python
 
 # ======= if else =======
+print("===== if else =====")
 n = 25                              # deklaracija ne zahtijeva navodjenje tipa promjenljive
 if n % 3 == 0:
     print("n = 3k")
@@ -11,6 +12,7 @@ else:
 
 
 # ======= loops =======
+print("===== loops =====")
 # ===== while =====
 i = 0
 while i < 10:
@@ -38,6 +40,7 @@ print()                             # prelazak u novi red
 # ===== list =====
 # - ponasa se kao dinamicki niz, ne funkcionise kao ulancana lista
 # - mutable (promjenjiva)
+print("===== list =====")
 
 list = [5, 8, 10, 13, 24, 30, 48]   # deklaracija liste, ne moraju svi podaci da budu istog tipa
 
@@ -81,9 +84,13 @@ def comparator(x):                  # custom comparator funkcija za opadajuci po
 print(sorted(list, key=comparator))     # sortiranje liste bez promjene originalne liste (key moze biti i lambda funkcija)
 print(sorted(list, key=lambda x: -x))   # lambda funkcije su jednolinijske jednkratne funckije za proste operacije
 
+print()
+
 # ===== tuple =====
 # - nepromjenjiva verzija liste
 # - immutable (nepromjenjiva)
+
+print("===== tuple =====")
 
 tuple = (1, 2, 3)                   # deklaracije torke, ne moraju svi podaci da budu istog tipa
 print(tuple)                        # ispis torke, koriste se drugacije zagrade () u odnosu na listu []
@@ -108,11 +115,13 @@ print(x1, x2)
 print((x1,x2).index(x1))
 print((x1,x2).count(x1))
 
+print()
 
 # ===== dictionary =====                # ekivalenta hash mapama u drugim jezicima
 # - kao json objekti/hash tabele - parovi kljuc:vrijednost
 # - mutable (promjenjiva)
 # - kljucevi moraju biti immutable tipa (string, int, float, tuple, ...), vrijednosti mogu biti bilo kog tipa
+print("===== dictionary =====")
 
 dictionary = {
     'key1': 123,
@@ -140,23 +149,26 @@ print("\nKljuc : Vrijednost")
 for key in dictionary:              # iteracija po kljucevima rjecnika
     print(f"{key}: {dictionary[key]}")
 
-print("\n Vrijednosti:")
+print("\nVrijednosti:")
 for v in dictionary.values():       # .values() - lista vrijednosti rjecnika
     print(v)
 
-print("\n Kljucevi:")
+print("\nKljucevi:")
 for k in dictionary.keys():         # .keys() - lista kljuceva rjecnika. isto kao prva for petlja
     print(k)
 
-print("\n Kljuc : Vrijednost")
+print("\nKljuc : Vrijednost")
 for k, v in dictionary.items():     # .items() - lista (kljuc, vrijednost) torki rjecnika
     print(f"{k}: {v}")
 
+print()
 
 # ===== set =====
 # - neuredjena kolekcija jedinstvenih elemenata
 # - mutable (promjenjiva)
 # - elementi moraju biti immutable tipa (string, int, float, tuple, ...)
+
+print("===== set =====")
 
 set1 = {1, 2, 3, 4, 5}              # deklaracija skupa
 print(set1, type(set1))             # ispis skupa
@@ -191,6 +203,57 @@ set1 = set1 | {10, 11, 12}          # dodavanje vise elemenata u skup
 set1 |= {13, 14, 15}                # isto ^
 print(set1)
 
+print()
 
 # ===== 3rd party data structures =====
 # counter, queue, heap, ...
+
+
+# ===== kretanje kroz strukture =====
+print("===== kretanje kroz strukture =====")
+y = [1,2,3,4]
+z = [5,6,7,8]
+for i in range(len(y)):
+    print(y[i] + z[i], end=" ")
+
+print()
+
+# struktura - lista, tuple, string, set, dictionary (iteracija po kljucevima)
+
+for i,j in zip(y,z):                # zip pravi tuple od elemenata iz vise struktura tako sto 
+                                    # spaja svaki i-ti element iz svih navedenih struktura x,y,... do kraja najkarace od njih, tj. (x[i], y[i], ...)
+    print(i+j, end=" ")
+
+print()
+
+for idx, el in enumerate(y):        # enumerate pravi tuple (indeks, element) za svaki element iz strukture y
+    print(idx, el, end=" ")
+
+print()
+
+for el in sorted(y):                # sortiranje strukture
+    print(el, end=" ")
+
+print()
+
+for el in reversed(y):              # obrtanje strukture
+    print(el, end=" ")
+
+print('\n')
+
+# ===== list comprehensions =====
+# - generisanje liste po zadatom sablonu
+print("===== list comprehensions =====")
+
+sve_nule = [0 for x in range(10)]   # lista koja sadrzi samo nule
+print(sve_nule)
+
+squares = [x**2 for x in range(10)]  # lista kvadrata brojeva od 0 do 9
+print(squares)
+
+even = [x for x in range(20) if x % 2 == 0]  # lista parnih brojeva od 0 do 19
+print(even)
+
+nested = [[0 if x%2==0 else 1 for x in range(y-2,y+1)] for y in range(0,9,3)]   # ugnjezdene liste
+print(nested)                       
+
