@@ -97,6 +97,18 @@ single = (1,)                       # tuple sa jednim elementom mora imati zarez
 # single = (1)                      # inace se tretira kao int
 print(single, type(single))                      
 
+def f(x):
+    # return f(x**2, x**3)
+    return x**2, x**3               # i ako ne navedemo zagrade, ako stoji zarez izmedju, vratice tuple
+
+x1, x2 = f(10)                      # otpakivanje
+x2, x1 = x1, x2                     # rotiranje vrijednosti otpakivanjem
+print(x1, x2)
+
+print((x1,x2).index(x1))
+print((x1,x2).count(x1))
+
+
 # --- dictionary ---                # ekivalenta hash mapama u drugim jezicima
 
 
