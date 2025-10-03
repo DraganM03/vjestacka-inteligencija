@@ -137,21 +137,20 @@ print(dictionary)
 
 # kretanje po rjecniku
 print("\nKljuc : Vrijednost")
-for key in dictionary:               # iteracija po kljucevima rjecnika
+for key in dictionary:              # iteracija po kljucevima rjecnika
     print(f"{key}: {dictionary[key]}")
 
 print("\n Vrijednosti:")
-for v in dictionary.values():        # .values() - lista vrijednosti rjecnika
+for v in dictionary.values():       # .values() - lista vrijednosti rjecnika
     print(v)
 
 print("\n Kljucevi:")
-for k in dictionary.keys():          # .keys() - lista kljuceva rjecnika. isto kao prva for petlja
+for k in dictionary.keys():         # .keys() - lista kljuceva rjecnika. isto kao prva for petlja
     print(k)
 
 print("\n Kljuc : Vrijednost")
 for k, v in dictionary.items():     # .items() - lista (kljuc, vrijednost) torki rjecnika
     print(f"{k}: {v}")
-
 
 
 # ===== set =====
