@@ -1,6 +1,6 @@
-# intro to python 
+# Intro to Python
 
-# ----- if else -----
+# ======= if else =======
 n = 25                              # deklaracija ne zahtijeva navodjenje tipa promjenljive
 if n % 3 == 0:
     print("n = 3k")
@@ -10,8 +10,8 @@ else:
     print("n = 3k + 2")
 
 
-# ----- loops -----
-# --- while ---
+# ======= loops =======
+# ===== while =====
 i = 0
 while i < 10:
     print(i, end=" ")               # end=" " da ne bi prelazilo u novi red
@@ -19,13 +19,13 @@ while i < 10:
 
 print()                             # prelazak u novi red
 
-# --- for ---
+# ===== for =====
 for i in range(10):                 # ponasa se kao for each u drugim jezicima
     print(i, end=" ")
 
 print()                             # prelazak u novi red
 
-# ----- functions -----
+# ======= functions =======
 def kvadrati_brojeva(a, b):
     for i in range(a, b+1, 1):      # +1 da bi ukljucio i b, 3. argument je korak (moze biti i negativan)
         print(i**2, end=" ")
@@ -34,8 +34,8 @@ kvadrati_brojeva(2, 8)
 print()                             # prelazak u novi red
 
 
-# ----- data structures -----
-# --- list ---
+# ====== data structures =======
+# ===== list =====
 # - ponasa se kao dinamicki niz, ne funkcionise kao ulancana lista
 # - mutable (promjenjiva)
 
@@ -81,7 +81,7 @@ def comparator(x):                  # custom comparator funkcija za opadajuci po
 print(sorted(list, key=comparator))     # sortiranje liste bez promjene originalne liste (key moze biti i lambda funkcija)
 print(sorted(list, key=lambda x: -x))   # lambda funkcije su jednolinijske jednkratne funckije za proste operacije
 
-# --- tuple ---
+# ===== tuple =====
 # - nepromjenjiva verzija liste
 # - immutable (nepromjenjiva)
 
@@ -109,11 +109,53 @@ print((x1,x2).index(x1))
 print((x1,x2).count(x1))
 
 
-# --- dictionary ---                # ekivalenta hash mapama u drugim jezicima
+# ===== dictionary =====                # ekivalenta hash mapama u drugim jezicima
+# - kao json objekti/hash tabele - parovi kljuc:vrijednost
+# - mutable (promjenjiva)
+# - kljucevi moraju biti immutable tipa (string, int, float, tuple, ...), vrijednosti mogu biti bilo kog tipa
+
+dictionary = {
+    'key1': 123,
+    'key2': 789
+}
+
+print(dictionary)                   # ispis cijelog rjecnika
+print(dictionary['key1'])           # pristup vrijednosti preko kljuca
+dictionary['key1'] = 456            # promjena vrijednosti preko kljuca
+dictionary['key3'] = 123            # dodavanje novog kljuc:vrijednost para
+print(dictionary)
+
+# print(dictionary['key4'])         # javlja KeyError ako kljuc nije u rjecniku
+if 'key4' in dictionary:            # zbog toga bi trebali da provjerimo da li postoji kljuc, prije nego sto pokusamo da mu pristupimo vrijednostima koje su mu dodijeljene
+    print(dictionary['key4'])
+else:
+    print("key4 nije u rjecniku")
+
+dictionary[123] = "abc"             # kljucevi ne moraju biti istog tipa
+dictionary[(1,2)] = [1,2,3]         # kljuc moze biti i tuple
+print(dictionary)
+
+# kretanje po rjecniku
+print("\nKljuc : Vrijednost")
+for key in dictionary:               # iteracija po kljucevima rjecnika
+    print(f"{key}: {dictionary[key]}")
+
+print("\n Vrijednosti:")
+for v in dictionary.values():        # .values() - lista vrijednosti rjecnika
+    print(v)
+
+print("\n Kljucevi:")
+for k in dictionary.keys():          # .keys() - lista kljuceva rjecnika. isto kao prva for petlja
+    print(k)
+
+print("\n Kljuc : Vrijednost")
+for k, v in dictionary.items():     # .items() - lista (kljuc, vrijednost) torki rjecnika
+    print(f"{k}: {v}")
 
 
-# --- set ---
+
+# ===== set =====
 
 
-# --- 3rd party data structures ---
+# ===== 3rd party data structures =====
 # counter, queue, heap, ...
