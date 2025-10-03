@@ -154,6 +154,42 @@ for k, v in dictionary.items():     # .items() - lista (kljuc, vrijednost) torki
 
 
 # ===== set =====
+# - neuredjena kolekcija jedinstvenih elemenata
+# - mutable (promjenjiva)
+# - elementi moraju biti immutable tipa (string, int, float, tuple, ...)
+
+set1 = {1, 2, 3, 4, 5}              # deklaracija skupa
+print(set1, type(set1))             # ispis skupa
+
+set1.add(6)                         # dodavanje elementa u skup
+set1.add(5)                         # vec postojeci elementi se nece duplirati iako se izvrsi "dodavanje"
+print(set1)                         # nece dodati jer 5 vec postoji u skupu
+
+if 3 in set1:                     # provjera da li element postoji u skupu
+    print("3 je u skupu")
+else:
+    print("3 nije u skupu")
+
+set2 = {4, 5, 6, 7, 8}
+
+# skupovne operacije
+print(set1 | set2)                  # unija skupova
+print(set1 & set2)                  # presjek skupova
+print(set1 - set2)                  # razlika skupova
+print(set1 ^ set2)                  # simetricna razlika skupova
+
+# nije spomenuo, ali postoje i:
+print(set1 <= set2)                 # provjera da li je set1 podskup set2
+print(set1 >= set2)                 # provjera da li je set2 podskup
+
+set1.remove(1)                      # uklanjanje elementa iz skupa (javlja KeyError ako element nije u skupu)
+set1.discard(10)                    # uklanjanje elementa iz skupa (ne javlja gresku ako element nije u skupu)
+print(set1)
+
+# tips and tricks
+set1 = set1 | {10, 11, 12}          # dodavanje vise elemenata u skup
+set1 |= {13, 14, 15}                # isto ^
+print(set1)
 
 
 # ===== 3rd party data structures =====
