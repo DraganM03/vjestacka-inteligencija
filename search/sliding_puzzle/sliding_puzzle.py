@@ -52,11 +52,17 @@ class SlidingPuzzle:
             raise ValueError("Invalid action")
         
         # return (s if s != pos_piece else pos_blank for s in state)
-        tuple.index
-        return (*self.state[:self.state.index(pos_piece)], pos_blank, *self.state[self.state.index(pos_piece)+1:])
+        # return (*self.state[:self.state.index(pos_piece)], pos_blank, *self.state[self.state.index(pos_piece)+1:])
+        return state[:state.index(pos_piece)] + (pos_blank,) + state[state.index(pos_piece)+1:]
 
     def print_state(self, state):
-        pass
+        for i in range(3):
+            for j in range(3):
+                pos = i*3 + j + 1
+                idx = state.index(pos)+1 if pos in state else ' '
+                print(idx, end=' ')
+            print()
+        print()
 
     # nije ovo prelazio
     # def __str__(self):
