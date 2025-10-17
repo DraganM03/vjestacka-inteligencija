@@ -1,5 +1,5 @@
 from sliding_puzzle import SlidingPuzzle
-from algorithms import bfs, dfs
+from algorithms import bfs, dfs, ucs
 
 sp = SlidingPuzzle((4, 1, 2, 6, 9, 8, 7, 5), (1, 2, 3, 6, 9, 8, 7, 4))
 # print(sp.start, sp.goal)
@@ -21,3 +21,4 @@ sp = SlidingPuzzle((4, 1, 2, 6, 9, 8, 7, 5), (1, 2, 3, 6, 9, 8, 7, 4))
 
 print('bfs:', bfs(sp))
 print('dfs:', dfs(sp))
+print('ucs', ucs(sp))

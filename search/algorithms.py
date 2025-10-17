@@ -43,3 +43,27 @@ def dfs(problem):
                 stack.append(next_node)
                 
     return None  
+
+def ucs(problem):
+    priority = PriorityQueue()
+    priority.put(Node(problem.start))
+
+    visited = set([])
+    
+    while not priority.empty():
+        curr_node = priority.get()
+        
+        if problem.is_goal(curr_node.state):
+            return curr_node.recon_path()
+        
+        visited.add(curr_node.state)
+        
+        for next_node in curr_node.expand(problem):
+            if next_node.state not in visited:
+                priority.put(next_node)
+                
+    return None      
+    
+    
+    
+# A* - homework - implementing the heuristic as a weight
