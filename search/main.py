@@ -21,4 +21,4 @@ sp = SlidingPuzzle((4, 1, 2, 6, 9, 8, 7, 5), (1, 2, 3, 6, 9, 8, 7, 4))
 
 print('bfs:', bfs(sp))
 print('dfs:', dfs(sp))
-print('ucs', ucs(sp))
+print('ucs:', ucs(sp))
