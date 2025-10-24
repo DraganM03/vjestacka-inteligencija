@@ -1,3 +1,4 @@
+# ===================== HILL CLIMBING =====================
 def hill_climbing(problem):
 
     curr_state = problem.start
@@ -25,16 +26,25 @@ def hill_climbing(problem):
 
         return curr_state
     
+# ==================== SIMULATED ANNEALING ====================
+# as t(ime) passes the T(emperature) drops
+#     ^
+#   T |.
+#     | &
+#     |  *-...________
+#     +----------------> time
+# 
+#   T = a+e^(-b*t)
+#   delta = score(succ) - score(curr)
+#   delta > 0 -> curr = succ
+#   delta <= 0 -> curr = succ with probability p = e^(delta/T)
+# =============================================================
+import math
+
+def get_temp(t, a=30, b=0.005, limit=1e-6):  #1e-6 = 10^-6
+    T = a * math.exp(-b * t)
+    if T < limit:
+        T = 0.0
+    return T
 
 # def simulated_annealing(problem, initial_temp, cooling_rate):
-    # as t(ime) passes the T(emperature) drops
-    #     ^
-    #   T |.
-    #     | &
-    #     |  *-...________
-    #     +----------------> time
-    # 
-    #   T = a+e^(-b*t)
-    #   delta = score(succ) - score(curr)
-    #   delta > 0 -> curr = succ
-    #   delta <= 0 -> curr = succ with probability p = e^(delta/T)
