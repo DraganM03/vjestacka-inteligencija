@@ -1,15 +1,15 @@
 # ===================== HILL CLIMBING =====================
 def hill_climbing(problem):
 
-    curr_state = problem.start
+    current_state = problem.start
 
     while True:
 
         best_successor = None
         best_score = -1         # initial value that cant be reached
 
-        actions = problem.get_actions(curr_state)
-        successors = [problem.get_successor(curr_state, action) for action in actions]
+        actions = problem.get_actions(current_state)
+        successors = [problem.get_successor(current_state, action) for action in actions]
 
         for successor in successors:
 
@@ -19,15 +19,15 @@ def hill_climbing(problem):
                 best_successor = successor
                 best_score = successor_score
 
-            if best_score > problem.get_score(curr_state):
-                curr_state = best_successor
+            if best_score > problem.get_score(current_state):
+                current_state = best_successor
             else:
                 break
 
-        return curr_state
+        return current_state
     
 # ==================== SIMULATED ANNEALING ====================
-# as t(ime) passes the T(emperature) drops
+# as time(t) passes the /(T) drops
 #     ^
 #   T |.
 #     | &
@@ -35,11 +35,12 @@ def hill_climbing(problem):
 #     +----------------> time
 # 
 #   T = a+e^(-b*t)
-#   delta = score(succ) - score(curr)
-#   delta > 0 -> curr = succ
-#   delta <= 0 -> curr = succ with probability p = e^(delta/T)
+#   delta = score(successor) - score(current)
+#   delta > 0 -> current = successor
+#   delta <= 0 -> current = successor with probability p = e^(delta/T)
 # =============================================================
 import math
+import random
 
 def get_temp(t, a=30, b=0.005, limit=1e-6):  #1e-6 = 10^-6
     T = a * math.exp(-b * t)
@@ -47,4 +48,35 @@ def get_temp(t, a=30, b=0.005, limit=1e-6):  #1e-6 = 10^-6
         T = 0.0
     return T
 
-# def simulated_annealing(problem, initial_temp, cooling_rate):
+def simulated_annealing(problem):
+    current_state = problem.start
+    t = 0 # time
+
+    while True:
+
+        T = get_temp(t)
+        if T == 0.0:
+            break
+
+        actions = problem.get_actions(current_state)
+        successors = [problem.get_successor(current_state, action) for action in actions]
+
+        # random successor
+        successor_state = random.choice(successors)
+
+        curr_score = problem.get_score(current_state)
+        succ_score = problem.get_score(successor_state)
+
+        delta = succ_score - curr_score
+
+        if delta > 0:
+            current_state = successor_state
+        else:
+            p = math.exp(delta / T)
+            if random.uniform(0,1) <= p:
+                current_state = successor_state
+            # else: do nothing, stay in current state
+
+        t += 1
+        
+    return current_state

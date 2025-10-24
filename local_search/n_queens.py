@@ -36,7 +36,7 @@ class NQueens:
         score = 0
         for j1, i1 in enumerate(state):
             for j2, i2 in enumerate(state[j1+1:], start=j1+1): # start=j1+1 to avoid starting from zero and double counting
-                # checking for the number of attacking queens - the goal is to minimize this score
+                # checking for the number of attacking queens - the goal is to maximize this score
                 if i1 != i2 and j1 != j2 and abs(i1 - i2) != abs(j1 - j2):
                     score += 1
         return score
